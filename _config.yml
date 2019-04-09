@@ -51,10 +51,6 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-  -scope:
-    path: "img"
-    values:
-      image: true
 
 kramdown:
   input: GFM
