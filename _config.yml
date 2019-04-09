@@ -46,7 +46,8 @@ markdown: kramdown
 
 # https://jekyllrb.com/docs/configuration/#precedence
 defaults:
-  -scope:
+   -
+    scope:
       path: ""
       type: "posts"
     values:
