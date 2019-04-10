@@ -9,13 +9,14 @@ description: >
 # Your information
 email: kfmd1008@gmail.com
 author: Jongmo Kim
-avatar: ""
-profile: One sentence introducing yourself.
+avatar: /img/profile_image.jpg
+profile: 하고싶은거 하고 살자.
 #twitter_username: twitter_username
 #github_username:  github_username
 profile_links:
   Email: "mailto:kfmd1008@gmail.com"
   GitHub: "https://github.com/kimjongmo"
+  Blog: "https://monny.tistory.com"
   # You can add more profile links above, or edit _includes/sidebar.html 
 
 # Comment Service (Disqus or 多说)
