@@ -4,6 +4,53 @@ title: About
 permalink: /about/
 ---
 
-Welcome to this website!
+## Who am i ?
 
-> This website is using [laobubu](http://laobubu.net)'s theme: [EasyBook](https://github.com/laobubu/jekyll-theme-EasyBook)
+Name : Jongmo Kim
+
+- [tag1](#1)
+
+- [tag2](#2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p id="1">tag1
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p id="2">
+
+tag2
+
+</p>
+
+
+
