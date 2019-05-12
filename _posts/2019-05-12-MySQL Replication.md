@@ -19,7 +19,7 @@ tags: db replication
 
 
 
-![](/img/database_replication.png)
+![](/img/database_replication.PNG)
 
 
 
