@@ -13,7 +13,7 @@ tags: spring-boot https
 
 프로젝트에 자가 서명을 이용한 후 http요청을 하게 되면 아래와 같은 응답을 받게된다. 
 
-![](/img/18-05-29/bad_request.PNG)
+![](/img/19-05-29/bad_request.PNG)
 
 당연히도 해당 포트는 이제 더이상 http요청을 받지않도록 설정이 되있기 때문이다. http요청도 가능하게 하는 방법은 아래와 같다.
 
