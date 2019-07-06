@@ -12,7 +12,16 @@ layout: default
   <article class="post-content">
     {{ content }}
   </article>
-  
+  <br><br>
+  <p class="contact" style="text-align: center;">
+  	{% if page.previous %}
+  	<a href="{{ page.previous.url | prepend: site.baseurl }}"><= 이전글 </a>
+  	{% endif %}
+  	<span>|</span>
+  	{% if page.next %}
+  	<a href="{{ page.next.url | prepend: site.baseurl }}"> 다음글 =></a>
+  	{% endif %}
+  </p>
   {% include comment.html %}
 
 </div>
