@@ -15,11 +15,11 @@ layout: default
   <br><br>
   <p class="contact" style="text-align: center;">
   	{% if page.previous %}
-  	<a href="{{ page.previous.url | prepend: site.baseurl }}"><= 이전글 </a>
+  	<a href="{{ page.previous.url | prepend: site.baseurl }}">prev post</a>
   	{% endif %}
   	<span>|</span>
   	{% if page.next %}
-  	<a href="{{ page.next.url | prepend: site.baseurl }}"> 다음글 =></a>
+  	<a href="{{ page.next.url | prepend: site.baseurl }}">next post</a>
   	{% endif %}
   </p>
   {% include comment.html %}
