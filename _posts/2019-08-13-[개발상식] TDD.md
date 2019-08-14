@@ -24,11 +24,11 @@ tags: TDD
 
 ## TDD 프로세스
 
-![](/img/19-08-13/traditional-dev-process.PNG)
+![](/img/19-08-13/traditional-dev-process.png)
 
 [전통적인 개발 프로세스]
 
-![](/img/19-08-13/test-driven-dev.PNG)
+![](/img/19-08-13/test-driven-dev.png)
 
 [테스트 주도 개발 프로세스]
 
@@ -67,6 +67,172 @@ tags: TDD
   - 추천 : 로또,사다리타기,체스 게임,볼링 게임,지뢰 찾기
 - 5단계 - <mark>의존 관계 추가를 통한 난이도 높이기</mark>
   - 웹, 모바일, 데이터베이스 등과 같은 의존 관계 추가
+
+<br>
+
+### TDD 경험해보기
+
+> "125+127" 의 문자열의 숫자와 기호를 읽고 계산해서 답을 산출하는 프로그램 작성해보기
+>
+> 조건1) 문자열은 2개의 수와 기호로 이루어져 있다.
+>
+> 조건2) 조건1에 맞지 않는 문자열이 주어지면 ArithmeticException을 발생시킨다.
+
+- 프로젝트 생성 및 github 연동
+  - Java, Sping Boot, Maven로 구성하여 프로젝트 생성
+  - https://www.gitignore.io/ 를 이용하여 .gitignore 생성 및 추가
+  - github 레포지토리 생성 후 프로젝트를 이곳에 푸시
+  
+- <mark>실패하는 테스트 코드</mark> 작성
+
+  - 의존 라이브러리를 뒤져보았을 때 junit버전이 4였으므로 https://junit.org/junit4/ 필요해보이는 것은 이곳을 통해서 계속 찾았다.
+    ![](/img/19-08-14/junit-version.PNG)
+  - 처음에는 컴파일을 실패하는 테스트 코드를 작성한다.
+    ![](/img/19-08-14/compile-fail.PNG)
+  - 컴파일까지는 할 수 있도록 소스를 구현시켜준다.
+    ![](/img/19-08-14/compile-pass.PNG)
+  - 컴파일이 가능하게 되었을 때 테스트를 진행시켜 실패가 나오도록 한다.
+    ![](/img/19-08-14/test-fail.PNG)
+
+- 테스트 <mark>통과 코드 구현</mark>
+
+  ![](/img/19-08-14/test-pass.PNG)
+  
+- <mark>리팩토링</mark> 하기
+
+  - 리팩토링 전 코드
+
+    ```java
+    public class StringCalculator {
+    
+        private static Logger logger = LoggerFactory.getLogger(StringCalculator.class);
+    
+        /**
+         * @param text Text is must consist of two number and sign.
+         */
+        public static int cal(String text) {
+    
+            char[] arr;
+            int len;
+            int operationIndex = -1;
+            int ret = 0;
+            int num1;
+            int num2;
+    
+            if (text == null || Strings.isEmpty(text)) {
+                throw new ArithmeticException("빈문자 혹은 널값은 불가합니다.");
+            }
+    
+            if (!text.matches("^([0-9]+)([+]|[-]|[/]|[*])([0-9]+)$")) {
+                throw new ArithmeticException("적절하지 않은 포맷입니다.");
+            }
+    
+            arr = text.toCharArray();
+            len = arr.length;
+    
+            for (int i = 0; i < len; i++) {
+                if (arr[i] < '0' || arr[i] > '9') {
+                    operationIndex = i;
+                    break;
+                }
+            }
+    
+            num1 = Integer.parseInt(text.substring(0, operationIndex));
+            num2 = Integer.parseInt(text.substring(operationIndex+1));
+            switch (arr[operationIndex]) {
+                case '+':
+                    ret = num1 + num2;
+                    break;
+                case '-':
+                    ret = num1 - num2;
+                    break;
+                case '*':
+                    ret = num1 * num2;
+                    break;
+                case '/':
+                    ret = num1 / num2;
+                    break;
+            }
+            return ret;
+        }
+    
+    }
+    ```
+
+  - 들여쓰기가 2인 곳을 없애자
+
+    연산자 인덱스 `operationIndex`를 구하는 곳이 들여쓰기가 2개 째가 되었는데 이를 <u>일단 메서드로 빼지 않고 코드를 수정</u>하여 들여쓰기를 하나로 만들었다
+
+    ```java
+    int temp = 0;
+    
+    while ('0' <= arr[temp++] && arr[temp] <= '9') ;
+    
+    operationIndex = temp - 1;
+    ```
+
+    다음으로 `switch 구문`에 들여쓰기가 2이상이게 되는데 if-else if 구문으로 들여쓰기를 2이하로 줄일 수 있지만 switch문이 좀 더 코드가 깔끔하다고 생각하기 때문에 이 부분은 냅두기로 하였다.
+
+  - else 제거
+
+  - 하나의 메서드가 하나의 기능만 하도록 만들기
+    cal메서드에는 아래와 같은 기능들을 하고 있다.
+
+    - 텍스트 검사
+    - 연산자 인덱스 찾기
+    - 텍스트의 숫자로 표기된 부분 파싱
+    - 연산 기호에 따른 계산
+
+    이들을 각각 메서드로 만들어 분리하도록 하였다. 리팩토링을 한 후 다시 테스트를 하여 통과하는지 보도록 한다.
+
+  - 객체지향적인 코드 만들기
+
+    - 연산 기호에 따른 계산 메서드를 Calculator라는 클래스로 만들었다.
+
+      ```java
+      public class Calculator {
+      
+          public static int cal(int[] number, char op) {
+              int ret = 0;
+              switch (op) {
+                  case '+':
+                      ret = add(number[0], number[1]);
+                      break;
+                  case '-':
+                      ret = minus(number[0], number[1]);
+                      break;
+                  case '*':
+                      ret = mul(number[0], number[1]);
+                      break;
+                  case '/':
+                      ret = div(number[0], number[1]);
+                      break;
+              }
+      
+              return ret;
+          }
+      
+          public static int add(int num1, int num2) {
+              return num1 + num2;
+          }
+      
+          public static int minus(int num1, int num2) {
+              return num1 - num2;
+          }
+      
+          public static int mul(int num1, int num2) {
+              return num1 * num2;
+          }
+      
+          public static int div(int num1, int num2) {
+              return num1 / num2;
+          }
+      }
+      ```
+
+    - 어렵다.. 
+
+지금까지 했던 연습 코드는 https://github.com/kimjongmo/practice-tdd 에 올려두었다. 앞으로도 꾸준하게 TDD를 생각하면서 연습을 해야겠다. 
 
 
 
