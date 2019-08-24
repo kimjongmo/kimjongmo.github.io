@@ -64,6 +64,27 @@
             text-decoration: underline;
             color: #588fab;
         }
+
+        .resume-skill {
+            display: flex;
+        }
+
+        .resume-skill > div {
+            width: 25%;
+        }
+
+        .resume-skill > div > h3 {
+            border-width: 0px;
+            color: mediumseagreen;
+        }
+
+        .badge {
+            border-radius: 12px;
+            background-color: darkseagreen;
+            color: white;
+            padding: 1px 7px;
+        }
+
     }
     .post-comments {
         padding-top: 30px;

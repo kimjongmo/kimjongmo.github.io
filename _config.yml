@@ -30,7 +30,7 @@ header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
     About: /about/
     Category: /category/
-    Donate: 
+    Portfolio: /portfolio/
 
 permalink: /archivers/:title
 plugins:
