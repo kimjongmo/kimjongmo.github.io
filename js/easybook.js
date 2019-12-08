@@ -240,3 +240,22 @@ function RealLoad() {
 }
 
 RealLoad();
+
+// 이미지 모달창 
+var imageTagList = document.querySelectorAll('article img');
+
+for(var i=0;i<imageTagList.length;i++){
+    imageTagList[i].addEventListener('click',function(){
+        var modal = document.getElementById('img-modal');
+        var content = document.getElementById('img-modal-content');
+        modal.style.display='block';
+        content.src = this.src;
+    });
+}
+
+function imgModalClose(){
+    var modal = document.getElementById('img-modal');
+    var content = document.getElementById('img-modal-content');
+    modal.style.display="none";
+    content.src = '';
+}
