@@ -64,7 +64,7 @@ public class FileUploadServiceTest{
 
 FileUploadService안에서는 someMethod()와 같이 내부의 다른 메서드를 요청하는 부분 등이 있는데  이 메소드를 실제로 실행 시킬 필요는 없기에 해당 메서드를 stubbing을 하면 된다.
 
-하지만 실제 생성된 객체이기 때문에 mockito의 given()이나 when()을 사용하여 모의 객체로 만든 후에 stubbing을 해야 했다.
+하지만 stubbing을 하기위해서 mockito의 given()이나 when()을 사용하려고 했지만 요구하는 객체가 모의 객체이므로 실제 객체를 모의 객체로 만들필요가 있었다.
 
 Mockito를 이용하여 모의 객체를 만들기 위한 방법들 중에는 mock()을 사용하는 방법과 spy()를 사용하는 방법이 있다.
 
