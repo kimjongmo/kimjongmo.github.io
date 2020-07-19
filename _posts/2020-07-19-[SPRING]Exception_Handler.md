@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exception Handler
+title: Exception_Handler
 data: 2020-07-19 22:02:00
 categories: spring
 permalink: /spring/exception-handler
