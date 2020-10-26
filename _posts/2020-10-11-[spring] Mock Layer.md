@@ -47,7 +47,7 @@ author: kimjongmo
 
 ![profile-dev](/img/mock-layer/profile-dev.png)
 
-![profile-prod](/img/mock-layer/profile-prod.png)
+![profile-prod](/img/mock-layer/profile-product.png)
 
 ![profile-select](/img/mock-layer/profile-select.png)
 
@@ -65,7 +65,7 @@ author: kimjongmo
 
 우리의 상황을 생각해보면 `dev` 일 때에는 `MockItemServiceImpl`이 붙어야 하고, `product`일 때는 `itemServiceImpl`을 주입받아야 한다. 그러므로 특정 빈의 이름을 지정해서 사용할 수는 없다. 그래서 구현체에 우선순위를 부여할 것이다. mockItemServiceImpl과 itemServiceImpl 두 개의 빈이 생성되었을 때에는 mock이 우선순위가 높아야하므로 MockItemServiceImpl에는 @Primary 를 붙여 우선순위를 제일 높게 잡아준다.
 
-![profile-prod](/img/mock-layer/profile-prod.png)
+![profile-prod](/img/mock-layer/profile-product.png)
 
 
 
