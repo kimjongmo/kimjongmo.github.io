@@ -37,7 +37,7 @@ author: kimjongmo
 
 아래는 샘플 코드입니다.
 
-https://github.com/kimjongmo/mock-layer/commits/master
+[https://github.com/kimjongmo/mock-layer](https://github.com/kimjongmo/mock-layer)
 
 
 
