@@ -4,7 +4,7 @@ title: Injection into RevisionListener
 data: 2020-10-27 20:00:00
 categories: spring
 permalink: /spring/inject-into-rev-listener
-tags: spring-boot spring-data-envers kotlin 
+tags: spring-boot hibernate-envers kotlin 
 author: kimjongmo
 
 ---
