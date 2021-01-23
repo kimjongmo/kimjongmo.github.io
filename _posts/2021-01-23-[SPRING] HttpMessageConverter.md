@@ -42,14 +42,14 @@ HttpMessageConverter에 대하여 알아보기 전 간단한 예시를 보도록
 
 
 
-아래의 코드가 이번 포스팅에서 사용할 엔드포인트이다.  스프링부트에서는 기본적으로 `application/json` 형식의 컨텐츠 타입만 지원하도록 디폴트되어있기 때문에 아래와 같이 `consumes`, `produces` 를 설정해주었다.
+아래의 코드가 이번 포스팅에서 사용할 엔드포인트이다.   
 
 ```java
 @RestController
 @Slf4j
 public class TestController {
     // POST + text/plain
-    @PostMapping(value = "/test/text", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/test/text")
     public ResponseEntity<String> textTest(@RequestBody String data){
         Person person = Person.deserialize(data);
         log.info("person = {}",person);
@@ -187,7 +187,7 @@ public class PersonHttpMessageConverter extends AbstractHttpMessageConverter<Per
 
 ```java
 // POST + text/plain
-@PostMapping(value = "/test/text", consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+@PostMapping(value = "/test/text")
 public ResponseEntity<Person> textTest(@RequestBody Person person){
     log.info("person = {}",person);
     return ResponseEntity.ok(person);
