@@ -11,11 +11,7 @@ comments: true
 
 
 
-## 시뮬레이션
-
-
-
-## 프롤로그.
+## 프롤로그
 
 HttpMessageConverter에 대하여 알아보기 전 간단한 예시를 보도록 하자.
 
