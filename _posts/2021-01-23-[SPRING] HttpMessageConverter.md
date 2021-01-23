@@ -113,7 +113,7 @@ mojong,29
 public ResponseEntity<String> textTest(@RequestBody Person person)
 ```
 
-만약 컨텐츠타입이 `application/json` 이었다면 위와 같이 적어도 자동으로 매핑을 시켜줬겠지만 현재 시뮬레이션의 컨텐츠타입은 `text/plain` 이기 때문에 위와 같이 적어준다해서 동작하지 않는다.  스프링에게 `text/plain` 컨텐츠타입 들어온 문자열 데이터를 `Person`으로 매핑을 하려면 어떻게 해주어야 하는지 알려주어야 한다.
+만약 컨텐츠타입이 `application/json` 으로 세팅하고 데이터를 json 형식으로 요청했더라면 위와 같이 적어도 자동으로 매핑을 시켜줬겠지만 현재 시뮬레이션의 컨텐츠타입은 `text/plain` 이기 때문에 위와 같이 적어준다해서 동작하지 않는다.  스프링에게 `text/plain` 컨텐츠타입 들어온 문자열 데이터를 `Person`으로 매핑을 하려면 어떻게 해주어야 하는지 알려주어야 한다.
 
 
 
