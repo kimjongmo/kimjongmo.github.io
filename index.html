@@ -8,7 +8,7 @@ layout: default
 
   <ul class="post-list">
     {% for post in paginator.posts %}
-      {% if post.disclose == 'false' %}
+      {% if post.disclose == false %}
         {% continue %}
       {% else %}
         <li>
