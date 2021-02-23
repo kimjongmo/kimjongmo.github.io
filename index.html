@@ -8,7 +8,9 @@ layout: default
 
   <ul class="post-list">
     {% for post in paginator.posts %}
-      {% if post.disclose == false then next endif %}
+      {% if post.disclose == false %}
+        {% next %}
+      {% endif %}
       <li>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
