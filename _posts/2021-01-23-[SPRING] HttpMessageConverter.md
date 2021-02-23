@@ -6,7 +6,6 @@ categories: spring
 permalink: /spring/http-message-converter
 tags: spring  
 author: kimjongmo
-comments: true
 ---
 
 
