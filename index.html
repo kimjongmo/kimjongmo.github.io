@@ -9,9 +9,9 @@ layout: default
   <ul class="post-list">
     {% for post in paginator.posts %}
       {% if post.disclose == 'false' %}
-          {% continue %}
-      {% endif %}
-      <li>
+        {% continue %}
+      {% else %}
+        <li>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
@@ -27,6 +27,7 @@ layout: default
           </p>
         </div>
       </li>
+      {% endif %}
     {% endfor %}
   </ul>
   
